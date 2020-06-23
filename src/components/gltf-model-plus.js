@@ -8,7 +8,8 @@ import { promisifyWorker } from "../utils/promisify-worker.js";
 import { MeshBVH, acceleratedRaycast } from "three-mesh-bvh";
 import { disposeNode, cloneObject3D } from "../utils/three-utils";
 import qsTruthy from "../utils/qs_truthy";
-import ECSYMOZComponentsExtension from "../ecsy/ECSYMOZComponentsExtension";
+// TODO Port ECSYMOZComponentsExtension
+// import ECSYMOZComponentsExtension from "../ecsy/ECSYMOZComponentsExtension";
 
 THREE.Mesh.prototype.raycast = acceleratedRaycast;
 
@@ -326,8 +327,8 @@ export async function loadGLTF(src, contentType, preferredTechnique, onProgress,
   gltfLoader.setBasisTextureLoader(basisTextureLoader);
 
   if (useECSY) {
-    const world = AFRAME.scenes[0].systems["hubs-systems"].worldManager.world;
-    gltfLoader.register(parser => new ECSYMOZComponentsExtension(world, parser));
+    // const world = AFRAME.scenes[0].systems["hubs-systems"].worldManager.world;
+    // gltfLoader.register(parser => new ECSYMOZComponentsExtension(world, parser));
   }
 
   const parser = await new Promise((resolve, reject) => gltfLoader.createParser(gltfUrl, resolve, onProgress, reject));
